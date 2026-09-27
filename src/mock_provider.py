@@ -12,4 +12,10 @@ class MockProvider(BaseProvider):
     def generate(self, prompt: str) -> LLMResponse:
         """Return a deterministic mock response."""
         # TODO: implement this method.
-        raise NotImplementedError("Implement MockProvider.generate().")
+        normalized_prompt = prompt.strip()
+        return LLMResponse(
+            text=f"Mock response to: {normalized_prompt}",
+            provider="mock",
+            model="mock-model",
+            usage=None,
+        )
